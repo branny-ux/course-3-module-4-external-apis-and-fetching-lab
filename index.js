@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Clear input immediately
     input.value = "";
 
+
     try {
       const response = await fetch(`${weatherApi}${state}`);
 
@@ -22,10 +23,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const data = await response.json();
 
-      // Clear previous alerts
+      // remove/Clear previous alerts
       alertsDisplay.innerHTML = "";
 
-      // Clear previous errors
+      // remove/Clear previous errors
       errorMessage.textContent = "";
       errorMessage.classList.add("hidden");
 
@@ -34,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
       summary.textContent = `${data.title}: ${data.features.length}`;
       alertsDisplay.append(summary);
 
-      // Headlines
+      //Headlines
       const list = document.createElement("ul");
 
       data.features.forEach(alert => {
@@ -49,5 +50,5 @@ document.addEventListener("DOMContentLoaded", () => {
       errorMessage.textContent = error.message;
       errorMessage.classList.remove("hidden");
     }
-  });
+ });
 });
